@@ -17,7 +17,8 @@ def main():
             generate_password()
 
         elif choice == "2":
-            generate_password()
+            print("\nThank you for using Password Generator!")
+            break
 
         else:
             print("\nInvalid choice! Please enter 1 or 2.")
