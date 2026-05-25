@@ -16,17 +16,30 @@ def generate_password():
     include_numbers=input("Include numbers? (yes/no):").strip().lower()
     include_special=input("Include special characters? (yes/no):").strip().lower()
 
-    password_characters = string.ascii_letters
+    password_list = []
+
+    password_list.append(random.choice(string.ascii_lowercase))
+    password_list.append(random.choice(string.ascii_uppercase))
+
+
+    all_characters = string.ascii_letters
 
     if include_numbers == "yes":
-        password_characters += string.digits
+        password_list.append(random.choice(string.digits))
+        all_characters += string.digits
 
     if include_special == "yes":
-        password_characters += string.punctuation
+        password_list.append(random.choice(string.punctuation))
+        all_characters += string.punctuation
 
-    password = ""
+    remaining_length = length-len(password_list)
+
 
     for _ in range(length):
-        password += random.choice(password_characters)
+        password_list.append(random.choice(all_characters))
+    
+    random.shuffle(password_list)
 
-    print(f"Generated Password: {password}")
+    password = "".join(password_list)
+
+    print(f"Generated Strong Password: {password}")
